@@ -25,8 +25,10 @@ var grille = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
 ];
 
+var _grille = document.querySelector('#grille');
+
 function initGrille() {
-    let _grille = document.querySelector('#grille');
+
     _grille.innerHTML = "";
     _grille.style.gridTemplateColumns = 'repeat('+grille[0].length+', 40px)';
     _grille.style.gridTemplateRows = 'repeat('+grille.length+', 40px)';
@@ -37,7 +39,7 @@ function initGrille() {
          for(let col in grille[ligne]) {
             let cellule = grille[ligne][col];
             let monElem = document.createElement("div");
-            console.log(cellule);
+          //  console.log(cellule);
             if(cellule == 0) {
              monElem.classList.add("mur");
          } else if(cellule == 1) {
@@ -45,10 +47,79 @@ function initGrille() {
          } else if(cellule == 2) {
              monElem.classList.add("bonbon");
          }
-        
+         monElem.style.gridColumn=(+col)+1;
+         monElem.style.gridRow=(+ligne)+1;
              _grille.append(monElem);
          };
      };
     }
+  //  initGrille();
+ 
 
-    initGrille();
+    var pacman = {
+        x:5, 
+        y:2,
+        direction:0
+    };
+    function boucleRefresh (){
+        initGrille();
+        deplacerPacman();
+      //  if(pacman.direction==0){
+
+
+        setTimeout(boucleRefresh, 1000);   
+
+     //   }
+    };
+ 
+ function deplacerPacman (){
+     if(pacman.direction==0){
+        pacman.x++;
+     }
+     else if(pacman.direction==1){
+        pacman.y++; 
+     }
+     else if(pacman.direction==2){
+        pacman.x--; 
+     }
+     else if(pacman.direction==3){
+        pacman.y--; 
+     }
+
+  
+    var pacmanElem = document.createElement("div")
+    pacmanElem.classList.add("pacman");
+    pacmanElem.style.gridColumn=(pacman.x);
+    pacmanElem.style.gridRow=(pacman.y);
+    _grille.appendChild(pacmanElem);
+   // if(pacman.direction==0);
+     }
+
+boucleRefresh();
+document.onkeypress=appuieTouche;
+function appuieTouche(event){
+    console.log(event.key)
+switch(event.key){
+  case "e":
+  case "E":
+      pacman.direction= 1
+      break;
+    case "s":
+    case "S":
+        pacman.direction= 2
+        break;
+    case "x":
+    case "X":
+        pacman.direction= 3
+        break;
+    case "d":
+    case "D":
+        pacman.direction= 0
+        break;
+
+
+
+
+}
+
+}
