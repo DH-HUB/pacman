@@ -43,27 +43,8 @@ for(let col in grille[ligne]) {
 }
 console.log("nombre de bonbon "+nombreBonbon)
 
-//Blue Phantom
 
 
-
-//Red Phantom
-
-
-
-//Yellow Phantom
-
-var YellowPhantom = {
-
-    rows: 13,
-
-    cols: 9,
-
-    direction: "0",
-
-    class: "yellow_phantom"
-
-};
 
 
 
@@ -127,12 +108,21 @@ direction: "0",
 class: "green_phantom"
 
 };
+
+var YellowPhantom = {
+x:4,
+y: 15,
+direction: "0",
+class: "yellow_phantom"
+
+};
     function boucleRefresh (){
         initGrille();
         deplacerPacman()
         deplacerRedPhantom()
         deplacerBluePhantom()
         deplacerGreenPhantom()
+        deplacerYellowPhantom()
       //  if(pacman.direction==0){
 
 
@@ -406,3 +396,64 @@ function deplacerGreenPhantom(){
 }
    
    }
+
+
+    //**************************************yellowPhantom */
+
+
+function deplacerYellowPhantom(){
+    YellowPhantom.direction= getRandomIntInclusive( 0, 3);
+   
+   
+   
+        if(YellowPhantom.direction==0){
+            YellowPhantom.x++;
+        }
+        else if(YellowPhantom.direction==1){
+            YellowPhantom.y++; 
+        }
+        else if(YellowPhantom.direction==2){
+            YellowPhantom.x--; 
+        }
+        else if(YellowPhantom.direction==3){
+            YellowPhantom.y--; 
+          
+   
+   
+   
+        }
+   
+        testColYellowPhantom()
+   
+        var YellowPhantomElem = document.createElement("div")
+        YellowPhantomElem.classList.add("yellow_phantom");
+        YellowPhantomElem.style.gridColumn=(YellowPhantom.x);
+        YellowPhantomElem.style.gridRow=(YellowPhantom.y);
+        _grille.appendChild(YellowPhantomElem);
+    }
+   
+   function testColYellowPhantom(){
+       if(grille[YellowPhantom.y-1][YellowPhantom.x-1]==0){
+           if(YellowPhantom.direction==0){
+            YellowPhantom.x--;
+            }
+            else if(YellowPhantom.direction==1){
+                YellowPhantom.y--; 
+            }
+            else if(YellowPhantom.direction==2){
+                YellowPhantom.x++; 
+            }
+            else if(YellowPhantom.direction==3){
+                YellowPhantom.y++; 
+            }
+        }
+
+
+        if(YellowPhantom.x==pacman.x){
+            if(YellowPhantom.y==pacman.y){
+                window.alert('perdu');
+   }
+}
+   
+   }
+
