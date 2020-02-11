@@ -26,7 +26,71 @@ h1{
   background-image: url("../image/img/bonbon.gif");
 }
 
-.pacman{
+/*.pacman{
   background-image: url("../image/img/pacman4.gif");
 z-index: 2;
+}*/
+
+.pacman {
+
+  background-image: url("../image/img/pacman4.gif");
+
+  background-size: 25px;
+
+  background-color: black;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  /* padding-left: 6rem; */
+
+}
+
+
+
+.blue_phantom {
+
+  background-image: url("../image/img/fantome0.gif");
+
+  background-color: black;
+
+}
+
+.red_phantom {
+
+  background-image: url("../image/img/fantome2.gif");
+
+  background-color: black;
+
+}
+
+.yellow_phantom {
+
+  background-image: url("../image/img/fantome1.gif");
+
+  background-color: black;
+
+}
+
+.green_phantom {
+
+  background-image: url("../image/img/fantome3.gif");
+
+  background-color: black;
+
+}
+
+
+
+#keys {
+
+  position: absolute;
+
+  top: 20;
+
+  left: 0;
+
+  padding-left: 2rem;
+
 }

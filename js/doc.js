@@ -24,6 +24,60 @@ var grille = [
     [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0 ], 
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
 ];
+function getRandomIntInclusive( min, max)//mon resultat à reprendre!!!
+{
+   min=Math.ceil(min);
+   max=Math.floor(max);
+   return Math.floor(Math.random()*(max-min+1))+min;  
+}
+
+// nombre de bonbons
+var nombreBonbon=0;
+
+for(let ligne in grille) {
+for(let col in grille[ligne]) {
+    if(grille[ligne][col]==2){
+        nombreBonbon++
+    }
+}
+}
+console.log("nombre de bonbon "+nombreBonbon)
+
+//Blue Phantom
+
+
+
+//Red Phantom
+
+
+
+//Yellow Phantom
+
+var YellowPhantom = {
+
+    rows: 13,
+
+    cols: 9,
+
+    direction: "0",
+
+    class: "yellow_phantom"
+
+};
+
+//Green Phantom
+
+var GreenPhantom = {
+
+    rows: 2,
+
+    cols: 17,
+
+    direction: "0",
+
+    class: "green_phantom"
+
+};
 
 var _grille = document.querySelector('#grille');
 
@@ -61,9 +115,25 @@ function initGrille() {
         y:2,
         direction:0
     };
+    var RedPhantom = {
+        x: 11,
+         y: 7,
+         direction: 0,
+         class: "red_phantom"
+     
+     }
+     var BluePhantom = {
+         x: 11,
+         y: 7,
+        direction: "0",
+        class: "blue_phantom"
+    
+    };
     function boucleRefresh (){
         initGrille();
-        deplacerPacman();
+        deplacerPacman()
+        deplacerRedPhantom()
+        deplacerBluePhantom()
       //  if(pacman.direction==0){
 
 
@@ -86,6 +156,7 @@ function initGrille() {
         pacman.y--; 
      }
 
+     testColPacman()
   
     var pacmanElem = document.createElement("div")
     pacmanElem.classList.add("pacman");
@@ -117,9 +188,162 @@ switch(event.key){
         pacman.direction= 0
         break;
 
-
-
-
 }
 
 }
+
+function testColPacman(){
+    if(grille[pacman.y-1][pacman.x-1]==0){
+        if(pacman.direction==0){
+            pacman.x--;
+         }
+         else if(pacman.direction==1){
+            pacman.y--; 
+         }
+         else if(pacman.direction==2){
+            pacman.x++; 
+         }
+         else if(pacman.direction==3){
+            pacman.y++; 
+           
+         }
+        }
+       //col pacman+phantom    
+
+     if(RedPhantom.x==pacman.x){
+         if(RedPhantom.y==pacman.y){
+             window.alert('perdu');
+
+//affichage du message c'est gagné si'bonbons=0'*****************
+             if(nombreBonbon==0){
+             
+                    window.alert('c\'est gagné');
+            
+         }
+     }
+     
+        // stopGame();
+     //fonction pacman mange les bonbons
+     }
+
+     if(grille[pacman.y-1][pacman.x-1]==2){
+        grille[pacman.y-1][pacman.x-1]=1
+     }
+    }   
+
+    //
+ function deplacerRedPhantom(){
+ RedPhantom.direction= getRandomIntInclusive( 0, 3);
+
+
+
+     if(RedPhantom.direction==0){
+        RedPhantom.x++;
+     }
+     else if(RedPhantom.direction==1){
+        RedPhantom.y++; 
+     }
+     else if(RedPhantom.direction==2){
+        RedPhantom.x--; 
+     }
+     else if(RedPhantom.direction==3){
+        RedPhantom.y--; 
+       
+
+
+
+     }
+
+     testColRedPhantom()
+
+     var RedPhantomElem = document.createElement("div")
+     RedPhantomElem.classList.add("red_phantom");
+     RedPhantomElem.style.gridColumn=(RedPhantom.x);
+     RedPhantomElem.style.gridRow=(RedPhantom.y);
+     _grille.appendChild(RedPhantomElem);
+ }
+
+function testColRedPhantom(){
+    if(grille[RedPhantom.y-1][RedPhantom.x-1]==0){
+        if(RedPhantom.direction==0){
+            RedPhantom.x--;
+         }
+         else if(RedPhantom.direction==1){
+            RedPhantom.y--; 
+         }
+         else if(RedPhantom.direction==2){
+            RedPhantom.x++; 
+         }
+         else if(RedPhantom.direction==3){
+            RedPhantom.y++; 
+         }
+        
+  //col pacman+phantom
+
+  
+
+        }
+        if(RedPhantom.x==pacman.x){
+            if(RedPhantom.y==pacman.y){
+                window.alert('perdu');
+               
+            }
+        }
+    } 
+//**************************************bluePhantom */
+
+
+function deplacerBluePhantom(){
+    BluePhantom.direction= getRandomIntInclusive( 0, 3);
+   
+   
+   
+        if(BluePhantom.direction==0){
+            BluePhantom.x++;
+        }
+        else if(BluePhantom.direction==1){
+            BluePhantom.y++; 
+        }
+        else if(BluePhantom.direction==2){
+            BluePhantom.x--; 
+        }
+        else if(BluePhantom.direction==3){
+            BluePhantom.y--; 
+          
+   
+   
+   
+        }
+   
+        testColBluePhantom()
+   
+        var BluePhantomElem = document.createElement("div")
+        BluePhantomElem.classList.add("blue_phantom");
+        BluePhantomElem.style.gridColumn=(BluePhantom.x);
+        BluePhantomElem.style.gridRow=(BluePhantom.y);
+        _grille.appendChild(BluePhantomElem);
+    }
+   
+   function testColBluePhantom(){
+       if(grille[BluePhantom.y-1][BluePhantom.x-1]==0){
+           if(BluePhantom.direction==0){
+            BluePhantom.x--;
+            }
+            else if(BluePhantom.direction==1){
+                BluePhantom.y--; 
+            }
+            else if(BluePhantom.direction==2){
+                BluePhantom.x++; 
+            }
+            else if(BluePhantom.direction==3){
+                BluePhantom.y++; 
+            }
+        }
+
+
+        if(BluePhantom.x==pacman.x){
+            if(BluePhantom.y==pacman.y){
+                window.alert('perdu');
+   }
+}
+   }
