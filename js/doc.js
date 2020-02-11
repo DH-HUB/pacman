@@ -65,19 +65,7 @@ var YellowPhantom = {
 
 };
 
-//Green Phantom
 
-var GreenPhantom = {
-
-    rows: 2,
-
-    cols: 17,
-
-    direction: "0",
-
-    class: "green_phantom"
-
-};
 
 var _grille = document.querySelector('#grille');
 
@@ -129,11 +117,22 @@ function initGrille() {
         class: "blue_phantom"
     
     };
+
+    //Green Phantom
+
+var GreenPhantom = {
+x: 2,
+y: 17,
+direction: "0",
+class: "green_phantom"
+
+};
     function boucleRefresh (){
         initGrille();
         deplacerPacman()
         deplacerRedPhantom()
         deplacerBluePhantom()
+        deplacerGreenPhantom()
       //  if(pacman.direction==0){
 
 
@@ -346,4 +345,64 @@ function deplacerBluePhantom(){
                 window.alert('perdu');
    }
 }
+   }
+
+
+   //**************************************greenPhantom */
+
+
+function deplacerGreenPhantom(){
+    GreenPhantom.direction= getRandomIntInclusive( 0, 3);
+   
+   
+   
+        if(GreenPhantom.direction==0){
+            GreenPhantom.x++;
+        }
+        else if(GreenPhantom.direction==1){
+            GreenPhantom.y++; 
+        }
+        else if(GreenPhantom.direction==2){
+            GreenPhantom.x--; 
+        }
+        else if(GreenPhantom.direction==3){
+            GreenPhantom.y--; 
+          
+   
+   
+   
+        }
+   
+        testColGreenPhantom()
+   
+        var GreenPhantomElem = document.createElement("div")
+        GreenPhantomElem.classList.add("green_phantom");
+        GreenPhantomElem.style.gridColumn=(GreenPhantom.x);
+        GreenPhantomElem.style.gridRow=(GreenPhantom.y);
+        _grille.appendChild(GreenPhantomElem);
+    }
+   
+   function testColGreenPhantom(){
+       if(grille[GreenPhantom.y-1][GreenPhantom.x-1]==0){
+           if(GreenPhantom.direction==0){
+            GreenPhantom.x--;
+            }
+            else if(GreenPhantom.direction==1){
+                GreenPhantom.y--; 
+            }
+            else if(GreenPhantom.direction==2){
+                GreenPhantom.x++; 
+            }
+            else if(GreenPhantom.direction==3){
+                GreenPhantom.y++; 
+            }
+        }
+
+
+        if(GreenPhantom.x==pacman.x){
+            if(GreenPhantom.y==pacman.y){
+                window.alert('perdu');
+   }
+}
+   
    }
