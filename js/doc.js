@@ -84,47 +84,26 @@ function initGrille() {
         y:2,
         direction:0
     };*/
-    var RedPhantom = {
-        x: 11,
-         y: 7,
-         direction: 0,
-         class: "red_phantom"
-     
-     }
-     var BluePhantom = {
-         x: 11,
-         y: 7,
-        direction: "0",
-        class: "blue_phantom"
-    
-    };
+    var RedPhantom = new Fantome("blue_phantom");
+     var BluePhantom = new Fantome();
 
     //Green Phantom
 
     var pacman=new PacMan();
 
-var GreenPhantom = {
-x: 2,
-y: 17,
-direction: "0",
-class: "green_phantom"
+var GreenPhantom = new Fantome();
 
-};
-
-var YellowPhantom = {
-x:4,
-y: 15,
-direction: "0",
-class: "yellow_phantom"
-
-};
+var YellowPhantom = new Fantome();
     function boucleRefresh (){
         initGrille();
         pacman.deplacerPacman()
-        deplacerRedPhantom()
-        deplacerBluePhantom()
-        deplacerGreenPhantom()
-        deplacerYellowPhantom()
+        GreenPhantom.deplacerPhantom()
+        RedPhantom.deplacerPhantom()
+        BluePhantom.deplacerPhantom()
+        YellowPhantom.deplacerPhantom()
+       // deplacerBluePhantom()
+       // deplacerGreenPhantom()
+       // deplacerYellowPhantom()
       //  if(pacman.direction==0){
 
 
@@ -183,47 +162,10 @@ switch(event.key){
 
 }
 
-function testColPacman(){
-    if(grille[pacman.y-1][pacman.x-1]==0){
-        if(pacman.direction==0){
-            pacman.x--;
-         }
-         else if(pacman.direction==1){
-            pacman.y--; 
-         }
-         else if(pacman.direction==2){
-            pacman.x++; 
-         }
-         else if(pacman.direction==3){
-            pacman.y++; 
-           
-         }
-        }
-       //col pacman+phantom    
 
-     if(RedPhantom.x==pacman.x){
-         if(RedPhantom.y==pacman.y){
-             window.alert('perdu');
 
-//affichage du message c'est gagné si'bonbons=0'*****************
-             if(nombreBonbon==0){
-             
-                    window.alert('c\'est gagné');
-            
-         }
-     }
-     
-        // stopGame();
-     //fonction pacman mange les bonbons
-     }
-
-     if(grille[pacman.y-1][pacman.x-1]==2){
-        grille[pacman.y-1][pacman.x-1]=1
-     }
-    }   
-
-    //
- function deplacerRedPhantom(){
+    //********************************************************fantom rouge
+/* function deplacerRedPhantom(){
  RedPhantom.direction= getRandomIntInclusive( 0, 3);
     console.log("Fantome rouge bouge vers :"+RedPhantom.direction)
 
@@ -280,7 +222,7 @@ function testColRedPhantom(){
                
             }
         }
-    } 
+    } */
 //**************************************bluePhantom */
 
 

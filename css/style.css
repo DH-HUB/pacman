@@ -2,7 +2,7 @@ section{
 
     display: flex;
     justify-content: center;
-    
+
 
 }
 
@@ -97,7 +97,11 @@ z-index: 2;
 }
 
 .score{
-background-color: rgb(209, 218, 218);
+background-color: rgb(159, 218, 252);
+height:100px;
+width:760px;
+padding-top: 5%;
+border-image: url(../image/img/mur.gif);
 
 }
 
