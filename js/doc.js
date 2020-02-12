@@ -79,11 +79,11 @@ function initGrille() {
   //  initGrille();
  
 
-    var pacman = {
+   /* var pacman = {
         x:5, 
         y:2,
         direction:0
-    };
+    };*/
     var RedPhantom = {
         x: 11,
          y: 7,
@@ -100,6 +100,8 @@ function initGrille() {
     };
 
     //Green Phantom
+
+    var pacman=new PacMan();
 
 var GreenPhantom = {
 x: 2,
@@ -118,7 +120,7 @@ class: "yellow_phantom"
 };
     function boucleRefresh (){
         initGrille();
-        deplacerPacman()
+        pacman.deplacerPacman()
         deplacerRedPhantom()
         deplacerBluePhantom()
         deplacerGreenPhantom()
@@ -131,7 +133,7 @@ class: "yellow_phantom"
      //   }
     };
  
- function deplacerPacman (){
+ /*function deplacerPacman (){
      if(pacman.direction==0){
         pacman.x++;
      }
@@ -153,7 +155,7 @@ class: "yellow_phantom"
     pacmanElem.style.gridRow=(pacman.y);
     _grille.appendChild(pacmanElem);
    // if(pacman.direction==0);
-     }
+     }*/
 
 boucleRefresh();
 document.onkeypress=appuieTouche;
@@ -223,7 +225,7 @@ function testColPacman(){
     //
  function deplacerRedPhantom(){
  RedPhantom.direction= getRandomIntInclusive( 0, 3);
-
+    console.log("Fantome rouge bouge vers :"+RedPhantom.direction)
 
 
      if(RedPhantom.direction==0){
@@ -284,7 +286,7 @@ function testColRedPhantom(){
 
 function deplacerBluePhantom(){
     BluePhantom.direction= getRandomIntInclusive( 0, 3);
-   
+    console.log("Fantome bleu bouge vers :"+BluePhantom.direction)
    
    
         if(BluePhantom.direction==0){
@@ -344,7 +346,7 @@ function deplacerBluePhantom(){
 function deplacerGreenPhantom(){
     GreenPhantom.direction= getRandomIntInclusive( 0, 3);
    
-   
+    console.log("Fantome vert bouge vers :"+GreenPhantom.direction)
    
         if(GreenPhantom.direction==0){
             GreenPhantom.x++;
@@ -404,7 +406,7 @@ function deplacerGreenPhantom(){
 function deplacerYellowPhantom(){
     YellowPhantom.direction= getRandomIntInclusive( 0, 3);
    
-   
+    console.log("Fantome jaune bouge vers :"+YellowPhantom.direction)
    
         if(YellowPhantom.direction==0){
             YellowPhantom.x++;

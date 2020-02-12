@@ -2,6 +2,7 @@ section{
 
     display: flex;
     justify-content: center;
+    
 
 }
 
@@ -94,3 +95,9 @@ z-index: 2;
   padding-left: 2rem;
 
 }
+
+.score{
+background-color: rgb(209, 218, 218);
+
+}
+
