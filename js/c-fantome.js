@@ -63,9 +63,20 @@ testColPhantom(){
         
   //col pacman+phantom
 
-  
+        
+
+        }//fonction bloquer les fantômes à l'interieur de la grille
+
+        if(this.x>grille[0].length){
+            this.x=1
 
         }
+        if(this.x<1){
+            this.x=grille[0].length
+
+        }
+        //fin de la eeeeeesssssssssssssssssssfonction bloquer les fantômes à l'interieur de la grille
+
         if(this.x==pacman.x){
             if(this.y==pacman.y){
                 window.alert('perdu');

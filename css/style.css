@@ -1,7 +1,8 @@
-section{
+body{
 
-    display: flex;
-    justify-content: center;
+  
+
+
 
 
 }
@@ -101,7 +102,7 @@ background-color: rgb(159, 218, 252);
 height:100px;
 width:760px;
 padding-top: 5%;
-border-image: url(../image/img/mur.gif);
+
+
 
 }
-

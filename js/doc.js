@@ -1,6 +1,7 @@
 
-
-var grille = [
+var maGrilleDef= new Grille();
+var grille=maGrilleDef.getGrilleDef();
+/*var grille; = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],//1 
     [0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0 ],//2 
     [0, 2, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0, 0, 0, 2, 0, 0, 2, 0 ],//3
@@ -23,7 +24,7 @@ var grille = [
     [0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0 ],
     [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0 ], 
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-];
+];*/
 function getRandomIntInclusive( min, max)//mon resultat à reprendre!!!
 {
    min=Math.ceil(min);
@@ -41,7 +42,7 @@ for(let col in grille[ligne]) {
     }
 }
 }
-console.log("nombre de bonbon "+nombreBonbon)
+
 
 
 
@@ -85,15 +86,15 @@ function initGrille() {
         direction:0
     };*/
     var RedPhantom = new Fantome("blue_phantom");
-     var BluePhantom = new Fantome();
+     var BluePhantom = new Fantome("red_phantom");
 
     //Green Phantom
 
     var pacman=new PacMan();
 
-var GreenPhantom = new Fantome();
+var GreenPhantom = new Fantome("yellow_phantom");
 
-var YellowPhantom = new Fantome();
+var YellowPhantom = new Fantome("green_phantom");
     function boucleRefresh (){
         initGrille();
         pacman.deplacerPacman()
@@ -139,7 +140,7 @@ var YellowPhantom = new Fantome();
 boucleRefresh();
 document.onkeypress=appuieTouche;
 function appuieTouche(event){
-    console.log(event.key)
+    
 switch(event.key){
   case "e":
   case "E":
@@ -228,7 +229,7 @@ function testColRedPhantom(){
 
 function deplacerBluePhantom(){
     BluePhantom.direction= getRandomIntInclusive( 0, 3);
-    console.log("Fantome bleu bouge vers :"+BluePhantom.direction)
+    
    
    
         if(BluePhantom.direction==0){
@@ -288,7 +289,7 @@ function deplacerBluePhantom(){
 function deplacerGreenPhantom(){
     GreenPhantom.direction= getRandomIntInclusive( 0, 3);
    
-    console.log("Fantome vert bouge vers :"+GreenPhantom.direction)
+    
    
         if(GreenPhantom.direction==0){
             GreenPhantom.x++;
@@ -348,7 +349,7 @@ function deplacerGreenPhantom(){
 function deplacerYellowPhantom(){
     YellowPhantom.direction= getRandomIntInclusive( 0, 3);
    
-    console.log("Fantome jaune bouge vers :"+YellowPhantom.direction)
+    
    
         if(YellowPhantom.direction==0){
             YellowPhantom.x++;
@@ -400,4 +401,11 @@ function deplacerYellowPhantom(){
 }
    
    }
+//*********************************************contôle/score
+
+
+var score=0;
+var affichage = document.querySelector('h2')
+
+
 

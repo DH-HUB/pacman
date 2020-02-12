@@ -54,21 +54,21 @@ class PacMan{
          if(RedPhantom.x==this.x){
              if(RedPhantom.y==this.y){
                  window.alert('perdu');
+                
     
     //affichage du message c'est gagné si'bonbons=0'*****************
-                 if(nombreBonbon==0){
                  
-                        window.alert('c\'est gagné');
-                
-             }
          }
          
             // stopGame();
          //fonction pacman mange les bonbons
-         }
+        }
         //Mange les bonbon
          if(grille[this.y-1][this.x-1]==2){
             grille[this.y-1][this.x-1]=1
+           score++
+           var affichage = document.querySelector('#score')
+            affichage.innerHTML = "Votre score est : "+score
          }
         }   
 }
